@@ -22,3 +22,17 @@ export const POSTaddAdmin = async (req, res) => {
       });
     });
 };
+
+export const PUTUpdateAdminDetail = async (req, res) => {
+  await adminDetailModel
+    .findByIdAndUpdate(req.params.id, req.body)
+    .then((data) => {
+      res
+        .status(200)
+        .json({ message: "admin detail updated successfully", data: data });
+      console.log(data);
+    })
+    .catch((err) => {
+      res.status(500).json({ message: "Error occured", error: err });
+    });
+};

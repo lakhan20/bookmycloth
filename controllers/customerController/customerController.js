@@ -1,11 +1,7 @@
-import CustomerModel from "../models/customerModel.js";
+import CustomerModel from "../../models/customerModels/customerModel.js";
 
 export const CreateCustomer = async (req, res) => {
-  let customer = new CustomerModel({
-    cName: req.body.cName,
-    cEmail: req.body.cEmail,
-    cMobile: req.body.cMobile,
-  });
+  let customer = new CustomerModel(req.body);
 
   await customer
     .save()
